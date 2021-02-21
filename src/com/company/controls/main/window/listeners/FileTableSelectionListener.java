@@ -19,6 +19,9 @@ public class FileTableSelectionListener implements ListSelectionListener {
     public void valueChanged(ListSelectionEvent e) {
         if (!e.getValueIsAdjusting() && !(view.getMainWindowForm().getTableModel().getRowCount() < 1)) {
             String path = view.getMainWindowForm().getSelectedTableRow();
+            if (path == "") {
+                return;
+            }
             String resultsText = model.getResultsData(path);
             view.getMainWindowForm().getResultsText().setText(resultsText);
         } else {

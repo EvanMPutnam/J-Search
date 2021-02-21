@@ -64,6 +64,9 @@ public class MainWindowForm {
     }
 
     public String getSelectedTableRow() {
+        if (fileTable.getRowCount() < 1) {
+            return "";
+        }
         return fileTable.getValueAt(fileTable.getSelectedRow(), 0).toString();
     }
 
