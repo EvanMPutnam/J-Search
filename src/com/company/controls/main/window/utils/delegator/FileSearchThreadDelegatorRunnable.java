@@ -1,7 +1,7 @@
-package com.company.utils.delegator;
+package com.company.controls.main.window.utils.delegator;
 
 import com.company.model.search.SearchResultsDataModel;
-import com.company.utils.workers.FileRegexProcessThreadRunnable;
+import com.company.controls.main.window.utils.workers.FileRegexProcessThreadRunnable;
 
 import java.io.IOException;
 import java.nio.file.*;

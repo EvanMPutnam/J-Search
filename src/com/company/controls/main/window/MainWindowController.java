@@ -18,14 +18,17 @@ public class MainWindowController implements PropertyChangeListener {
     private SearchResultsDataModel searchResultsDataModel;
 
 
-
     public MainWindowController(MainWindowView view, SearchResultsDataModel searchResultsDataModel) {
         this.searchResultsDataModel = searchResultsDataModel;
         this.windowView = view;
+
+        // Link listener controllers to components.
         setupHelpButtons();
         setupBrowseButton();
         setupSearchButton();
         setupTableSelect();
+
+        // Handle model data changes and update components.
         searchResultsDataModel.addListener(this);
     }
 
@@ -66,7 +69,6 @@ public class MainWindowController implements PropertyChangeListener {
             windowView.getMainWindowForm().getTableModel().setRowCount(0);
 
         } else if (SearchResultsDataModel.DATA_FINISH_SEARCH_EVENT.equalsIgnoreCase(propName)) {
-            // TODO: Not sure if I like kicking off the secondary thread here.
 
         }
     }

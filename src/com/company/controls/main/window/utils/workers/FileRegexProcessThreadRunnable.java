@@ -1,4 +1,4 @@
-package com.company.utils.workers;
+package com.company.controls.main.window.utils.workers;
 
 import com.company.model.search.SearchResultsDataModel;
 

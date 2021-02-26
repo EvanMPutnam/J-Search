@@ -8,6 +8,8 @@ import javax.swing.*;
 public class MainWindowView {
 
     private static final String TITLE = "J Fast Search";
+    private static final int STARTING_WIDTH = 1600;
+    private static final int STARTING_HEIGHT = 800;
 
     private MainWindowForm mainWindowForm;
     private JFrame masterFrame;
@@ -19,7 +21,7 @@ public class MainWindowView {
         masterFrame.setTitle(TITLE);
         masterFrame.add(mainWindowForm.getTopLevelPanel());
         masterFrame.setVisible(true);
-        masterFrame.setSize(1600, 800);
+        masterFrame.setSize(STARTING_WIDTH, STARTING_HEIGHT);
     }
 
     public JFrame getMasterFrame() {

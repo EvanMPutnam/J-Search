@@ -1,7 +1,7 @@
-package com.company.utils.delegator;
+package com.company.controls.main.window.utils.delegator;
 
 import com.company.model.search.SearchResultsDataModel;
-import com.company.utils.workers.StringRegexProcessThreadRunnable;
+import com.company.controls.main.window.utils.workers.StringRegexProcessThreadRunnable;
 
 import java.util.ArrayList;
 

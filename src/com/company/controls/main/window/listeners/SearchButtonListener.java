@@ -1,8 +1,8 @@
 package com.company.controls.main.window.listeners;
 
 import com.company.model.search.SearchResultsDataModel;
-import com.company.utils.delegator.FileContentsSearchThreadDelegatorRunnable;
-import com.company.utils.delegator.FileSearchThreadDelegatorRunnable;
+import com.company.controls.main.window.utils.delegator.FileContentsSearchThreadDelegatorRunnable;
+import com.company.controls.main.window.utils.delegator.FileSearchThreadDelegatorRunnable;
 import com.company.views.main.window.MainWindowView;
 
 import javax.swing.*;
