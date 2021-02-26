@@ -5,6 +5,8 @@ import com.company.controls.main.window.listeners.BrowseFileButtonListener;
 import com.company.controls.main.window.listeners.FileTableSelectionListener;
 import com.company.controls.main.window.listeners.HelpButtonMessagesListener;
 import com.company.controls.main.window.listeners.SearchButtonListener;
+import com.company.controls.main.window.listeners.menu.ClipboardCopyMenuListener;
+import com.company.controls.main.window.listeners.menu.FileBrowserMenuListener;
 import com.company.model.search.SearchResultsDataModel;
 import com.company.views.main.window.MainWindowView;
 
@@ -27,9 +29,15 @@ public class MainWindowController implements PropertyChangeListener {
         setupBrowseButton();
         setupSearchButton();
         setupTableSelect();
+        setupMenuSelect();
 
         // Handle model data changes and update components.
         searchResultsDataModel.addListener(this);
+    }
+
+    private void setupMenuSelect() {
+        windowView.getFileBrowserMenuItem().addActionListener(new FileBrowserMenuListener(windowView));
+        windowView.getCopyPathToClipboardMenuItem().addActionListener(new ClipboardCopyMenuListener(windowView));
     }
 
     private void setupTableSelect () {
@@ -69,7 +77,10 @@ public class MainWindowController implements PropertyChangeListener {
             windowView.getMainWindowForm().getTableModel().setRowCount(0);
 
         } else if (SearchResultsDataModel.DATA_FINISH_SEARCH_EVENT.equalsIgnoreCase(propName)) {
+            // Nothing here atm.  Might add something later.
 
+        } else if (SearchResultsDataModel.DATA_CONTENT_SEARCH_FINISH_EVENT.equalsIgnoreCase(propName)) {
+            windowView.getMainWindowForm().setSearchStatusText("Finished");
         }
     }
 }

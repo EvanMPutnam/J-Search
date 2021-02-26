@@ -8,7 +8,8 @@ public class SearchResultsDataModel {
 
     public static final String DATA_UPDATE_EVENT = "data_update";
     public static final String DATA_CLEAR_EVENT = "data_clear";
-    public static final String DATA_FINISH_SEARCH_EVENT = "data_max_size";
+    public static final String DATA_FINISH_SEARCH_EVENT = "data_files_finished";
+    public static final String DATA_CONTENT_SEARCH_FINISH_EVENT = "data_files_content_finished";
 
     private Queue<String> validFilePaths;
     private SwingPropertyChangeSupport propChangeFirer;
@@ -26,7 +27,14 @@ public class SearchResultsDataModel {
     public void finalizeFileSearch() {
         synchronized (validFilePaths) {
             finishedFileRegexSearch = true;
-            propChangeFirer.firePropertyChange(DATA_FINISH_SEARCH_EVENT, false, true);
+            propChangeFirer.firePropertyChange(DATA_FINISH_SEARCH_EVENT, false, finishedFileRegexSearch);
+        }
+    }
+
+    public void finalizeFileContentSearch() {
+        synchronized (validFilePaths) {
+            finishedFileRegexSearch = true;
+            propChangeFirer.firePropertyChange(DATA_CONTENT_SEARCH_FINISH_EVENT, false, finishedFileRegexSearch);
         }
     }
 
@@ -50,6 +58,7 @@ public class SearchResultsDataModel {
         synchronized (validFilePaths) {
             finishedFileRegexSearch = false;
             validFilePaths.clear();
+            results.clear();
             results = new FileResultsDataModel();
             propChangeFirer.firePropertyChange(DATA_CLEAR_EVENT, false, true);
         }

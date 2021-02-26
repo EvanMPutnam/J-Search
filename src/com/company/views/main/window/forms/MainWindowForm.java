@@ -24,6 +24,7 @@ public class MainWindowForm {
     private JTextField fileStringTextField;
     private JScrollPane fileScrollPane;
     private JScrollPane resultsScrollPane;
+    private JLabel searchStatusTextField;
 
     private JTable fileTable;
     private JList listOfPaths;
@@ -64,12 +65,15 @@ public class MainWindowForm {
     }
 
     public String getSelectedTableRow() {
-        if (fileTable.getRowCount() < 1) {
+        if (fileTable.getRowCount() < 1 || fileTable.getSelectedRow() < 0) {
             return "";
         }
         return fileTable.getValueAt(fileTable.getSelectedRow(), 0).toString();
     }
 
+    public void setSearchStatusText(String text) {
+        searchStatusTextField.setText("Search Status: " + text);
+    }
 
     public JTable getFileTable() {
         return fileTable;
@@ -81,14 +85,6 @@ public class MainWindowForm {
 
     public JTextArea getResultsText() {
         return resultsText;
-    }
-
-    public void setListOfPaths(JList listOfPaths) {
-        this.listOfPaths = listOfPaths;
-    }
-
-    public JList getListOfPaths() {
-        return listOfPaths;
     }
 
     public JTextField getSearchStringTextField() {
@@ -293,10 +289,10 @@ public class MainWindowForm {
         final JPanel panel2 = new JPanel();
         panel2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         topLevelPanel.add(panel2, BorderLayout.SOUTH);
-        final JLabel label4 = new JLabel();
-        label4.setHorizontalAlignment(10);
-        label4.setText("Search Status: None       ");
-        panel2.add(label4);
+        searchStatusTextField = new JLabel();
+        searchStatusTextField.setHorizontalAlignment(10);
+        searchStatusTextField.setText("Search Status: None       ");
+        panel2.add(searchStatusTextField);
         searchButton = new JButton();
         searchButton.setHorizontalAlignment(0);
         searchButton.setText("Search");

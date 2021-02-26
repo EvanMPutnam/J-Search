@@ -65,6 +65,7 @@ public class FileContentsSearchThreadDelegatorRunnable implements Runnable{
         complete = true;
         isSuccessful = !killThreads;
         System.out.println("File Content Delegator: Exit");
+        model.finalizeFileContentSearch();
     }
 
     private void startContentSearchThreads() {

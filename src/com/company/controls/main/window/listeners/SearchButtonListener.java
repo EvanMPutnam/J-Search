@@ -41,6 +41,7 @@ public class SearchButtonListener implements ActionListener {
             fileSearchThreadDelegatorRunnable.killSearch();
             fileContentsSearchThreadDelegatorRunnable.killSearch();
             JOptionPane.showMessageDialog(mainWindowView.getMasterFrame(), "Please wait.  Killing search.\n");
+            mainWindowView.getMainWindowForm().setSearchStatusText("Killed");
         } else {
             // Clear the model data.
             searchResultsDataModel.clearData();
@@ -63,6 +64,8 @@ public class SearchButtonListener implements ActionListener {
             fileContentsSearchThreadDelegatorRunnable = new FileContentsSearchThreadDelegatorRunnable(searchResultsDataModel, searchRegex, numberOfCores);
             fileContentsSearchThread = new Thread(fileContentsSearchThreadDelegatorRunnable);
             fileContentsSearchThread.start();
+
+            mainWindowView.getMainWindowForm().setSearchStatusText("Running");
         }
     }
 

@@ -42,5 +42,9 @@ public class FileResultsDataModel {
         return rString;
     }
 
+    public void clear() {
+        map.clear();
+    }
+
 
 }

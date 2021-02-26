@@ -203,7 +203,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="ae103" class="javax.swing.JLabel">
+          <component id="ae103" class="javax.swing.JLabel" binding="searchStatusTextField">
             <constraints/>
             <properties>
               <horizontalAlignment value="10"/>
